@@ -1,0 +1,109 @@
+/*
+	Root design tokens and reset
+	- `:root` stores color variables used across the site
+	- `box-sizing` makes sizing predictable
+*/
+:root{
+    --brand:#0b74ff;
+    --bg:#fff;
+    --text:#222}
+*{box-sizing:border-box}
+
+/*
+	Base body styles
+	- font stack and background color
+*/
+body{
+	margin:0;
+	font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
+	color:var(--text);
+	background:var(--bg);
+	-webkit-font-smoothing:antialiased}
+
+/*
+	Layout helper: centers content and limits width
+*/
+.container{
+	max-width:1000px;
+	margin:0 auto;
+	padding:1rem}
+
+/*
+	Header styles
+	- brand and navigation layout
+*/
+.site-header{
+	background:#fff;
+	border-bottom:1px solid #eee}
+.site-header .container{
+	display:flex;
+	align-items:center;
+	justify-content:space-between}
+.brand{
+	font-weight:700;
+	color:var(--brand);
+	text-decoration:none}
+.main-nav ul{
+	display:flex;
+	gap:1rem;
+	list-style:none;
+	margin:0;
+	padding:0}
+.main-nav a{text-decoration:none;color:#333}
+
+/*
+	Hero section: main call-to-action area
+*/
+.hero{
+	padding:4rem 0;
+	background:linear-gradient(180deg,rgba(11,116,255,0.06),transparent)}
+.hero .lead{
+	font-size:1.125rem;
+	color:#444}
+
+/*
+	Buttons: primary and ghost variant
+*/
+.btn{
+	display:inline-block;
+	padding:.6rem 1rem;
+	border-radius:6px;
+	background:var(--brand);
+	color:#fff;text-decoration:none}
+.btn.ghost{
+	background:transparent;
+	color:var(--brand);
+	border:1px solid var(--brand);
+	margin-left:.5rem}
+
+/*
+	Features grid: responsive card layout
+*/
+.features{
+	display:grid;
+	grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+	gap:1rem;
+	padding:2rem 0}
+.feature{
+	background:#fff;
+	padding:1rem;
+	border:1px solid #f0f0f0;
+	border-radius:8px}
+
+/*
+	Footer styling
+*/
+.site-footer{
+	padding:1rem 0;
+	border-top:1px solid #eee;
+	margin-top:2rem}
+
+/*
+	Responsive tweaks for small screens
+*/
+@media(max-width:640px){
+	.site-header 
+	.container{flex-direction:column;align-items:flex-start}
+	.main-nav ul{flex-wrap:wrap}
+}
+    

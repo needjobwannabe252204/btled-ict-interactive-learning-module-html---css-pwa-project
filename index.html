@@ -1,11 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BTLEd ICT Interactive Module PWA Project</title>
-</head>
-<body>
+    <head>
+        <!-- Document metadata: charset and viewport for responsive behavior -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <!-- Page title shown in the browser tab -->
+        <title>BTLEd — Home</title>
+        <!-- Link to the main stylesheet (keeps presentation separate from content) -->
+        <link rel="stylesheet" href="/src/css/index.css">
+    </head>
+    <body>
+        <!-- Site header: contains brand and primary navigation -->
+        <header class="site-header">
+            <div class="container">
+                <!-- Brand link returns to the root/home page -->
+                <a class="brand" href="/">BTLEd Interactive Module</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="src/nav/home.html">Home</a></li>
+                        <li><a href="src/nav/about.html">About</a></li>
+                        <li><a href="src/nav/contact.html">Contact</a></li>
+                        <li><a href="src/nav/myaccount.html">My Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-</body>
+        <!-- Hero / primary call-to-action area -->
+        <main class="hero">
+            <div class="container">
+                <!-- Main heading and short description -->
+                <h1>Welcome to BTLEd</h1>
+                <p class="lead">Interactive ICT learning modules — offline capable and PWA-ready.</p>
+                <p>
+                    <a class="btn" href="src/nav/home.html">Enter App</a>
+                    <a class="btn ghost" href="src/nav/about.html">Learn More</a>
+                </p>
+            </div>
+        </main>
+
+        <!-- Feature highlights section: brief descriptions of key features -->
+        <section class="features container">
+            <div class="feature">
+                <h3>Offline Ready</h3>
+                <p>Install the app and access content without network connection.</p>
+            </div>
+            <div class="feature">
+                <h3>Modular Content</h3>
+                <p>Organize videos and materials in the assets folder for offline access.</p>
+            </div>
+            <div class="feature">
+                <h3>Simple Onboarding</h3>
+                <p>Collect minimal user info locally for a personalized experience.</p>
+            </div>
+        </section>
+
+        <!-- Site footer: small print and copyright -->
+        <footer class="site-footer">
+            <div class="container">
+                <small>&copy; 2026 BTLEd</small>
+            </div>
+        </footer>
+
+        <!-- Main JavaScript file for small interactive behaviors -->
+        <script src="/src/js/main.js"></script>
+    </body>
 </html>

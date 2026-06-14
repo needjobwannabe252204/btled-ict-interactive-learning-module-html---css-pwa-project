@@ -1,0 +1,43 @@
+<!-- Page: My Account — local profile page for future JS usage -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Account — BTLEd</title>
+    <link rel="stylesheet" href="../css/nav.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="home.html">Home</a> |
+        <a href="about.html">About</a> |
+        <a href="contact.html">Contact</a> |
+        <a href="myaccount.html">My Account</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Comment: simple form to collect local profile data -->
+      <h1>My Account</h1>
+      <form id="profileForm">
+        <label>First name<br><input id="firstName" name="firstName" type="text"></label><br>
+        <label>Last name<br><input id="lastName" name="lastName" type="text"></label><br>
+        <label>Course<br><input id="course" name="course" type="text"></label><br>
+        <label>Section<br><input id="section" name="section" type="text"></label><br>
+        <label>Year<br><input id="year" name="year" type="text"></label><br>
+        <button type="submit">Save Profile</button>
+      </form>
+
+      <section id="savedProfile">
+        <!-- Saved profile will appear here after saving -->
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2026 BTLEd</small>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
