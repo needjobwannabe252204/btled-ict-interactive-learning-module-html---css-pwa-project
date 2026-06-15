@@ -69,3 +69,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Mobile navigation toggle: attach after DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('profileForm');
+  const savedEl = document.getElementById('savedProfile');
+  if (form) {
+    // populate if data exists
+    const profile = loadProfile();
+    if (profile) {
+      form.firstName.value = profile.firstName || '';
+      form.lastName.value = profile.lastName || '';
+      form.course.value = profile.course || '';
+      form.section.value = profile.section || '';
+      form.year.value = profile.year || '';
+      if (savedEl) savedEl.textContent = 'Loaded saved profile.';
+    }
+
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const data = {
+        firstName: form.firstName.value.trim(),
+        lastName: form.lastName.value.trim(),
+        course: form.course.value.trim(),
+        section: form.section.value.trim(),
+        year: form.year.value.trim(),
+      };
+      if (saveProfile(data)) {
+        if (savedEl) savedEl.textContent = 'Profile saved locally.';
+        console.log('Profile saved', data);
+      } else {
+        if (savedEl) savedEl.textContent = 'Failed to save profile.';
+      }
+    });
+  }
+});

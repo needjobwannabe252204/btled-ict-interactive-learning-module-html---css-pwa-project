@@ -1,54 +1,132 @@
-.container{
-    max-width:900px;
-    margin:1rem auto;
-    padding:0 1rem
-}
-nav a{
-    color:#0b74ff;
-    text-decoration:none;
-    margin-right:.5rem}
-h1{
-	color:#0b74ff;
-}
-p{
-    line-height:1.5}
-ul{
-    padding-left:1.25rem
-}
-li{
-    margin:.25rem 0
-}
-label{
-	display:block;
-	margin:.6rem 0;
-}
-input{
-	padding:.4rem;
-	border:1px solid #ddd;
-	border-radius:4px;
-	width:100%;
-	max-width:420px;
-}
-button{
-	margin-top:.6rem;
-	padding:.5rem 1rem;
-	border-radius:6px;
-	background:#0b74ff;
-	color:#fff;
-	border:none;
-}
-#savedProfile{
-	margin-top:1rem;
-	padding:.5rem;
-	border:1px dashed #eee;
+/*
+ Organized navigation stylesheet
+/*
+	Navigation stylesheet (cleaned)
+	- header: green
+	- page background: subtle blue gradient
+	- off-canvas nav revealed by `#menuToggle` / `.menu-toggle`
+*/
+
+:root{
+	--brand-color: #28a745;
+	--brand-contrast: #ffffff;
+	--accent: #1f6fb3;
+	--brand-bg-start: #f2f8fd;
+	--brand-bg-end: rgba(47,111,168,0.10);
+	--max-width: 900px;
+	--page-gap: 1rem;
 }
 
+*{box-sizing:border-box}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:0 1rem;background:transparent}
+
+body{font-family:Segoe UI,system-ui,Arial,Helvetica,sans-serif;color:#222;margin:0}
+
+html,body{height:100%;background: linear-gradient(180deg,var(--brand-bg-start) 0%, rgba(47,111,168,0.04) 40%, var(--brand-bg-end) 100%) !important}
+
+h1{color:var(--brand-color);margin:0 0 .5rem}
+p{line-height:1.5;margin:0 0 1rem}
+ul{padding-left:1.25rem;margin:0 0 1rem}
+li{margin:.25rem 0}
+
+label{display:block;margin:.6rem 0}
+input,select,textarea{padding:.4rem;border:1px solid #ddd;border-radius:4px;width:100%;max-width:420px}
+button{margin-top:.6rem;padding:.5rem 1rem;border-radius:6px;background:var(--accent);color:#fff;border:none;cursor:pointer}
+#savedProfile{margin-top:1rem;padding:.5rem;border:1px dashed #eee}
+
+.site-header{background:var(--brand-color);color:var(--brand-contrast)}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:var(--page-gap);padding:.75rem 1rem;position:relative}
+.brand{color:var(--brand-contrast);font-weight:600;text-decoration:none;font-size:1.05rem;position:absolute;left:50%;transform:translateX(-50%);z-index:1200}
+.main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.75rem;align-items:center}
+.main-nav a{color:var(--brand-contrast);text-decoration:none;padding:.4rem .6rem;border-radius:6px}
+.main-nav a:hover,.main-nav a:focus{background:rgba(255,255,255,0.12)}
+
+.menu-toggle{background:transparent;border:0;color:var(--brand-contrast);font-size:1.25rem;padding:.25rem;cursor:pointer}
+.nav-toggle{display:none}
+
+/* off-canvas nav */
+.main-nav{position:fixed;top:0;left:0;height:100%;width:260px;max-width:80%;background:var(--brand-color);padding:1.25rem 1rem;box-shadow:2px 0 8px rgba(0,0,0,0.2);transform:translateX(-110%);transition:transform 260ms ease;z-index:1100;overflow-y:auto}
+.site-header.nav-open .main-nav{transform:translateX(0)}
+.main-nav ul{flex-direction:column;gap:.5rem}
+.main-nav a{display:block;padding:.6rem;border-radius:4px}
+
+.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);opacity:0;visibility:hidden;transition:opacity 200ms ease;z-index:1050}
+.site-header.nav-open + .nav-overlay{opacity:1;visibility:visible}
+
+/* small screens: show menu toggle; on wide screens nav can be shown inline if desired (kept hidden by default) */
+@media(min-width:900px){
+	.main-nav{position:static;height:auto;width:auto;transform:none;box-shadow:none;background:transparent;padding:0}
+	.main-nav ul{flex-direction:row}
+	.nav-overlay{display:none}
+}
+
+/* hamburger animation support (if using bars) */
+.site-header.nav-open .nav-toggle .bar:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.site-header.nav-open .nav-toggle .bar:nth-child(2){opacity:0}
+.site-header.nav-open .nav-toggle .bar:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.menu-toggle{order:0}
+.nav-toggle{order:0}
+.main-nav{order:1}
+
+/* Provide a subtle separator in page footers where header isn't used */
+footer{padding:1rem;text-align:center;color:#666}
+
+/* 5. Hamburger toggle (mobile) */
+.nav-toggle{display:none;background:transparent;border:0;padding:.25rem;align-items:center;justify-content:center;cursor:pointer}
+.nav-toggle .bar{display:block;width:22px;height:2px;background:var(--brand-contrast);margin:4px 0;transition:transform 200ms ease,opacity 200ms ease}
+
+/* menu-toggle (text-based hamburger) */
+.menu-toggle{background:transparent;border:0;color:var(--brand-contrast);font-size:1.25rem;padding:.25rem;cursor:pointer}
+
+/* 6. Off-canvas nav (hidden by default, reveal via button) */
+.main-nav{
+	position:fixed;
+	top:0;
+	left:0;
+	height:100%;
+	width:260px;
+	max-width:80%;
+	background:var(--brand-color);
+	padding:1.25rem 1rem;
+	box-shadow:2px 0 8px rgba(0,0,0,0.2);
+	transform:translateX(-110%);
+	transition:transform 260ms ease;
+	z-index:1100;
+	overflow-y:auto;
+}
+
+.site-header.nav-open .main-nav{transform:translateX(0)}
+
+.main-nav ul{flex-direction:column;gap:.5rem}
+.main-nav a{display:block;padding:.6rem;border-radius:4px}
+
+/* overlay shown when sidebar is open (inserted by JS as sibling after header) */
+.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);opacity:0;visibility:hidden;transition:opacity 200ms ease;z-index:1050}
+.site-header.nav-open + .nav-overlay{opacity:1;visibility:visible}
+
+/* animate the hamburger into an X when open */
+.site-header.nav-open .nav-toggle .bar:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.site-header.nav-open .nav-toggle .bar:nth-child(2){opacity:0}
+.site-header.nav-open .nav-toggle .bar:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+
+.site-header.nav-open .main-nav{transform:translateX(0)}
 
 
 
+.main-nav ul{flex-direction:column;gap:.5rem}
+
+.main-nav a{display:block;padding:.6rem;border-radius:4px}
 
 
 
+/* overlay shown when sidebar is open (inserted by JS as sibling after header) */
+
+.nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.4);opacity:0;visibility:hidden;transition:opacity 200ms ease;z-index:1050}
+
+.site-header.nav-open + .nav-overlay{opacity:1;visibility:visible}
 
 
 
+/* animate the hamburger into an X when open */

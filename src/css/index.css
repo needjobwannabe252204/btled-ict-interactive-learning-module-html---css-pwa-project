@@ -1,109 +1,52 @@
 /*
-	Root design tokens and reset
-	- `:root` stores color variables used across the site
-	- `box-sizing` makes sizing predictable
+ Root design tokens and reset
 */
 :root{
-    --brand:#0b74ff;
-    --bg:#fff;
-    --text:#222}
+	--brand:#0b74ff;
+	--bg:#fff;
+	--text:#222;
+	--max-width:480px; /* mobile-first */
+}
 *{box-sizing:border-box}
 
-/*
-	Base body styles
-	- font stack and background color
-*/
-body{
-	margin:0;
-	font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;
-	color:var(--text);
-	background:var(--bg);
-	-webkit-font-smoothing:antialiased}
+/* Base body styles */
+body{margin:0;font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
 
-/*
-	Layout helper: centers content and limits width
-*/
-.container{
-	max-width:1000px;
-	margin:0 auto;
-	padding:1rem}
+/* Layout helper */
+.container{max-width:var(--max-width);margin:0 auto;padding:.75rem}
 
-/*
-	Header styles
-	- brand and navigation layout
-*/
-.site-header{
-	background:#fff;
-	border-bottom:1px solid #eee}
-.site-header .container{
-	display:flex;
-	align-items:center;
-	justify-content:space-between}
-.brand{
-	font-weight:700;
-	color:var(--brand);
-	text-decoration:none}
-.main-nav ul{
-	display:flex;
-	gap:1rem;
-	list-style:none;
-	margin:0;
-	padding:0}
+/* Header styles */
+.site-header{background:#fff;border-bottom:1px solid #eee}
+.site-header .container{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:700;color:var(--brand);text-decoration:none}
+.main-nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
 .main-nav a{text-decoration:none;color:#333}
 
-/*
-	Hero section: main call-to-action area
-*/
-.hero{
-	padding:4rem 0;
-	background:linear-gradient(180deg,rgba(11,116,255,0.06),transparent)}
-.hero .lead{
-	font-size:1.125rem;
-	color:#444}
+/* Hero */
+.hero{padding:2rem 0;background:linear-gradient(180deg,rgba(11,116,255,0.04),transparent)}
+.hero .lead{font-size:1rem}
 
-/*
-	Buttons: primary and ghost variant
-*/
-.btn{
-	display:inline-block;
-	padding:.6rem 1rem;
-	border-radius:6px;
-	background:var(--brand);
-	color:#fff;text-decoration:none}
-.btn.ghost{
-	background:transparent;
-	color:var(--brand);
-	border:1px solid var(--brand);
-	margin-left:.5rem}
+/* Buttons */
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:6px;background:var(--brand);color:#fff;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);margin-left:.5rem}
 
-/*
-	Features grid: responsive card layout
-*/
-.features{
-	display:grid;
-	grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-	gap:1rem;
-	padding:2rem 0}
-.feature{
-	background:#fff;
-	padding:1rem;
-	border:1px solid #f0f0f0;
-	border-radius:8px}
+/* Features */
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem;padding:1.25rem 0}
+.feature{background:#fff;padding:.75rem;border:1px solid #f0f0f0;border-radius:8px}
 
-/*
-	Footer styling
-*/
-.site-footer{
-	padding:1rem 0;
-	border-top:1px solid #eee;
-	margin-top:2rem}
+/* Footer */
+.site-footer{padding:1rem 0;border-top:1px solid #eee;margin-top:2rem}
 
-/*
-	Responsive tweaks for small screens
-*/
+/* Layout adjustments for wide screens */
+@media(min-width:900px){
+	:root{--max-width:1000px}
+	.hero{padding:4rem 0}
+	.hero .lead{font-size:1.125rem}
+	.container{padding:1rem}
+}
+
 @media(max-width:640px){
-	.site-header 
-	.container{flex-direction:column;align-items:flex-start}
+	.site-header .container{flex-direction:row;align-items:center}
 	.main-nav ul{flex-wrap:wrap}
 }
     
